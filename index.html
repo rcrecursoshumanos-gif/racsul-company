@@ -631,6 +631,62 @@
       border: 1px solid #f5c6cb;
     }
 
+    /* ==========================================
+       9. VENTANA FLOTANTE (MODAL DE CONFIRMACIÓN)
+       ========================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--white);
+      padding: 35px 25px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: modalFadeIn 0.3s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-icon {
+      font-size: 3.5rem;
+      color: #25D366;
+      margin-bottom: 15px;
+    }
+
+    .modal-content h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+      line-height: 1.5;
+    }
+
     footer {
       background-color: #122230;
       color: var(--white);
@@ -927,7 +983,7 @@
     </div>
   </section>
 
-  <!-- 7. FORMULARIO POSTULA AQUÍ (ENVÍO AUTOMÁTICO DE CORREO CON ADJUNTO Y DATOS) -->
+  <!-- 7. FORMULARIO POSTULA AQUÍ -->
   <section id="postula" class="section-padding postula-section">
     <div class="container">
       <h2 class="section-title">Postula a RACSUL COMPANY</h2>
@@ -985,6 +1041,18 @@
     </div>
   </section>
 
+  <!-- VENTANA FLOTANTE / MODAL DE CONFIRMACIÓN -->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h3>¡Solicitud Enviada!</h3>
+      <p>Tu postulación fue registrada exitosamente. Serás redirigido a nuestro WhatsApp para completar la confirmación con el área de Selección.</p>
+      <button id="modalBtn" class="btn btn-red" style="width: 100%;">Aceptar y Continuar</button>
+    </div>
+  </div>
+
   <!-- PIE DE PÁGINA -->
   <footer>
     <div class="container">
@@ -995,13 +1063,58 @@
   <!-- SCRIPT DE ENVÍO Y MANEJO DE FORMULARIO -->
   <script>
     document.getElementById('postulaForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita la redirección predeterminada de FormSubmit
+      
+      var form = this;
       var btn = document.getElementById('btnSubmit');
       var status = document.getElementById('formStatus');
       
       btn.disabled = true;
       btn.innerText = 'Enviando postulación...';
-      status.className = 'form-status';
-      status.style.display = 'none';
+      
+      // Capturamos los datos para construir el mensaje de WhatsApp
+      var nombre = document.getElementById('nombre').value;
+      var area = document.getElementById('area').value;
+      var correo = document.getElementById('email').value;
+
+      // Envío silencioso por Fetch / AJAX a FormSubmit
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(function(response) {
+        if (response.ok) {
+          // Mostrar Ventana Flotante / Modal
+          var modal = document.getElementById('confirmModal');
+          modal.classList.add('active');
+
+          document.getElementById('modalBtn').addEventListener('click', function() {
+            // Número oficial de WhatsApp actualizado
+            var numeroWa = "51922795134"; 
+            var textoWa = encodeURIComponent("Hola, acabo de enviar mi postulación a RACSUL COMPANY. Mi nombre es " + nombre + ", postulando al área de " + area + " (" + correo + ").");
+            
+            // Abrir WhatsApp en una nueva pestaña
+            window.open("https://wa.me/" + numeroWa + "?text=" + textoWa, "_blank");
+            
+            // Refrescar la página actual
+            window.location.reload();
+          });
+        } else {
+          status.className = 'form-status error';
+          status.innerText = 'Hubo un error al enviar la postulación. Por favor intenta de nuevo.';
+          status.style.display = 'block';
+          btn.disabled = false;
+          btn.innerText = 'Enviar Postulación';
+        }
+      }).catch(function(error) {
+        status.className = 'form-status error';
+        status.innerText = 'Hubo un error de conexión. Inténtalo más tarde.';
+        status.style.display = 'block';
+        btn.disabled = false;
+        btn.innerText = 'Enviar Postulación';
+      });
     });
   </script>
 

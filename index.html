@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RACSUL COMPANY | Excelencia Culinaria y Desarrollo Profesional</title>
+  
+  <!-- Tipografía Google Fonts y FontAwesome para Íconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================
+       1. VARIABLES Y ESTILOS GENERALES
+       ========================================== */
+    :root {
+      --primary-blue: #1C3144;
+      --accent-red: #C1121F;
+      --accent-red-hover: #A00E19;
+      --bg-light: #F4F6F8;
+      --text-dark: #2B2D42;
+      --text-muted: #555968;
+      --white: #FFFFFF;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* MARCA DE AGUA CORPORATIVA */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 850px;
+      height: 850px;
+      transform: translate(-50%, -50%);
+      background-image: url('logoracsul.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.035;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 50px auto;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .btn-red {
+      background-color: var(--accent-red);
+      color: var(--white);
+    }
+
+    .btn-red:hover {
+      background-color: var(--accent-red-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-blue {
+      background-color: var(--primary-blue);
+      color: var(--white);
+    }
+
+    .btn-blue:hover {
+      background-color: #122230;
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================
+       BARRA SUPERIOR DE REDES SOCIALES
+       ========================================== */
+    .top-bar {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 8px 0;
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .top-bar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar-socials {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .social-btn {
+      color: var(--white);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .social-btn-fb {
+      background-color: #1877F2;
+    }
+
+    .social-btn-fb:hover {
+      background-color: #145dbf;
+    }
+
+    .social-btn-linkedin {
+      background-color: #0A66C2;
+    }
+
+    .social-btn-linkedin:hover {
+      background-color: #084e96;
+    }
+
+    /* ==========================================
+       2. ENCABEZADO CON LOGO DE MARCA
+       ========================================== */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 85px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      color: var(--accent-red);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--accent-red);
+    }
+
+    /* ==========================================
+       3. HERO SECTION (IMAGEN DE FONDO)
+       ========================================== */
+    .hero {
+      background: linear-gradient(rgba(28, 49, 68, 0.88), rgba(28, 49, 68, 0.88)), 
+                  url('conferenciaracsul.jpeg') center/cover no-repeat;
+      color: var(--white);
+      padding: 100px 0 120px 0;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      margin-bottom: 35px;
+      opacity: 0.92;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================
+       4. SECCIÓN EXPERIENCIA Y BENEFICIOS DE PRODUCTO
+       ========================================== */
+    .exp-category-title {
+      font-size: 1.4rem;
+      color: var(--accent-red);
+      margin: 35px 0 20px 0;
+      font-weight: 600;
+      border-bottom: 2px solid var(--accent-red);
+      padding-bottom: 5px;
+      display: inline-block;
+    }
+
+    .product-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid #EAEAEA;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 22px;
+      flex-grow: 1;
+    }
+
+    .product-body h3 {
+      color: var(--primary-blue);
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .product-body p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .text-only-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      border: 1px solid #EAEAEA;
+      border-top: 4px solid var(--accent-red);
+      transition: var(--transition);
+    }
+
+    .text-only-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .text-only-card h3 {
+      color: var(--primary-blue);
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .text-only-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================
+       5. SECCIÓN "QUIÉNES SOMOS"
+       ========================================== */
+    .about-section {
+      background-color: var(--bg-light);
+    }
+
+    .about-header-box {
+      background-color: var(--white);
+      padding: 35px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      border-left: 5px solid var(--accent-red);
+    }
+
+    .about-header-box h3 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .mvv-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--primary-blue);
+    }
+
+    .mvv-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .values-wrapper {
+      background-color: var(--white);
+      padding: 35px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .values-wrapper h3 {
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .value-item {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 6px;
+    }
+
+    .value-item h4 {
+      color: var(--accent-red);
+      margin-bottom: 8px;
+    }
+
+    /* ==========================================
+       6. SECCIÓN BENEFICIOS DE TRABAJAR EN RACSUL
+       ========================================== */
+    .team-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 25px;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid #EAEAEA;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-img-container {
+      position: relative;
+      width: 100%;
+      height: 260px;
+    }
+
+    .team-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: var(--primary-blue);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .team-body {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .team-title {
+      font-size: 1.1rem;
+      color: var(--primary-blue);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .team-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       7. SECCIÓN ÁREAS DE TRABAJO Y LÍNEA DE CARRERA
+       ========================================== */
+    .areas-section {
+      background-color: var(--bg-light);
+    }
+
+    .areas-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 35px;
+    }
+
+    @media (max-width: 768px) {
+      .areas-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .area-box {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .area-box h3 {
+      color: var(--primary-blue);
+      font-size: 1.35rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--accent-red);
+      padding-bottom: 8px;
+    }
+
+    .area-box p.intro {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .area-list {
+      list-style: none;
+    }
+
+    .area-item {
+      margin-bottom: 18px;
+    }
+
+    .area-item h4 {
+      color: var(--primary-blue);
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .area-item h4::before {
+      content: "•";
+      color: var(--accent-red);
+      font-size: 1.5rem;
+    }
+
+    .area-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-left: 18px;
+    }
+
+    /* ==========================================
+       8. FORMULARIO POSTULA AQUÍ
+       ========================================== */
+    .postula-section {
+      background-color: var(--primary-blue);
+      color: var(--white);
+    }
+
+    .postula-section .section-title {
+      color: var(--white);
+    }
+
+    .postula-section .section-subtitle {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .form-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      color: var(--text-dark);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #CCC;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-blue);
+    }
+
+    .form-status {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 5px;
+      display: none;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .form-status.success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .form-status.error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    footer {
+      background-color: #122230;
+      color: var(--white);
+      text-align: center;
+      padding: 25px 0;
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR CON REDES SOCIALES -->
+  <div class="top-bar">
+    <div class="container top-bar-container">
+      <span>Síguenos en nuestras redes sociales:</span>
+      <div class="top-bar-socials">
+        <a href="https://www.facebook.com/share/1beTcmfxFT/" target="_blank" class="social-btn social-btn-fb">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </a>
+        <a href="https://www.linkedin.com/company/racsul-company-sac/?viewAsMember=true" target="_blank" class="social-btn social-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. ENCABEZADO CON LOGO DE LA CARPETA -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo-container">
+        <img src="logo.jpg" alt="RACSUL COMPANY Logo" class="logo-img" onerror="this.src='logoracsul.jpg'">
+        <span class="logo-text">RACSUL <span>COMPANY</span></span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#quienes-somos" class="nav-link">Quiénes Somos</a></li>
+        <li><a href="#experiencia" class="nav-link">Productos y Salud</a></li>
+        <li><a href="#beneficios-equipo" class="nav-link">Beneficios Laborales</a></li>
+        <li><a href="#areas-trabajo" class="nav-link">Áreas de Trabajo</a></li>
+        <li><a href="#postula" class="btn btn-red">Postula Aquí</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION CON IMAGEN DE FONDO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Desarróllate Profesionalmente en RACSUL COMPANY</h1>
+      <p>Transformamos la alimentación de las familias peruanas con productos de cocina de alta gama y ofrecemos una plataforma de crecimiento profesional basada en la meritocracia, la ética y la excelencia.</p>
+      <div class="hero-buttons">
+        <a href="#postula" class="btn btn-red">Únete a Nuestro Equipo</a>
+        <a href="#experiencia" class="btn btn-blue">Conoce Nuestros Productos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SECCIÓN QUIÉNES SOMOS -->
+  <section id="quienes-somos" class="section-padding about-section">
+    <div class="container">
+      <h2 class="section-title">Quiénes Somos</h2>
+      <p class="section-subtitle">Conoce la historia, visión y valores firmes sobre los que construimos el futuro de RACSUL COMPANY.</p>
+
+      <div class="about-header-box">
+        <h3>RACSUL COMPANY</h3>
+        <p>RACSUL COMPANY es una organización peruana formalmente constituida, dedicada a la distribución de productos de cocina de alta gama. Nos enfocamos en transformar la alimentación de las familias peruanas y en ofrecer una plataforma de crecimiento empresarial basada en la meritocracia.</p>
+      </div>
+
+      <div class="mvv-grid">
+        <div class="mvv-card">
+          <h3>Propósito</h3>
+          <p>Impactar positivamente la calidad de vida de las familias mediante la nutrición consciente y brindar independencia económica a nuestros colaboradores.</p>
+        </div>
+
+        <div class="mvv-card">
+          <h3>Misión</h3>
+          <p>Ofrecer soluciones culinarias de grado médico con los más altos estándares de calidad, respaldados por una atención personalizada y un equipo comercial altamente profesional.</p>
+        </div>
+
+        <div class="mvv-card">
+          <h3>Visión</h3>
+          <p>Ser reconocidos como el distribuidor líder de productos de cocina de alta gama en el Perú, destacados por nuestra excelencia operativa, ética profesional y retención de talento.</p>
+        </div>
+      </div>
+
+      <div class="values-wrapper">
+        <h3>Nuestros Valores Corporativos</h3>
+        <div class="values-grid">
+          <div class="value-item">
+            <h4>Transparencia</h4>
+            <p>Claridad total con nuestros clientes y en nuestro plan de compensación.</p>
+          </div>
+          <div class="value-item">
+            <h4>Meritocracia</h4>
+            <p>Crecimiento profesional proporcional al esfuerzo y resultados.</p>
+          </div>
+          <div class="value-item">
+            <h4>Excelencia</h4>
+            <p>Compromiso con la calidad en cada demostración y servicio posventa.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SECCIÓN TECNOLOGÍA, SALUD Y VALOR DE PRODUCTO -->
+  <section id="experiencia" class="section-padding">
+    <div class="container">
+      <h2 class="section-title">Tecnología de Salud y Valor de Producto</h2>
+      <p class="section-subtitle">Sistemas culinarios de alta gama que garantizan durabilidad, nutrición superior y ahorro en el hogar.</p>
+
+      <div class="exp-category-title">1. Tecnología de Salud y Grado Médico</div>
+      <div class="product-benefits-grid">
+        
+        <div class="product-card">
+          <img src="aceroquirurgico.jpeg" alt="Acero Quirúrgico de Alta Pureza" class="product-img" onerror="this.src='moduloracsulcompany.jpg'">
+          <div class="product-body">
+            <h3>Acero Quirúrgico de Alta Pureza</h3>
+            <p>Elaborado con materiales no porosos de grado médico que evitan la liberación de residuos metálicos y eliminan la contaminación cruzada de sabores u olores.</p>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80" alt="Máxima Conservación de Nutrientes" class="product-img">
+          <div class="product-body">
+            <h3>Máxima Conservación de Nutrientes</h3>
+            <p>Sistema de cocción con sellado de humedad que permite cocinar verduras en sus propios jugos, reteniendo un porcentaje significativamente mayor de vitaminas y minerales frente al hervido tradicional.</p>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?auto=format&fit=crop&w=600&q=80" alt="Cocina Saludable Sin Grasa Añadida" class="product-img">
+          <div class="product-body">
+            <h3>Cocina Saludable Sin Grasa Añadida</h3>
+            <p>Diseño térmico avanzado que permite sellar y cocinar proteínas utilizando sus aceites naturales, reduciendo drásticamente el consumo diario de grasas y calorías.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="exp-category-title" style="margin-top: 55px;">2. Valor, Eficiencia y Ahorro a Largo Plazo</div>
+      <div class="product-benefits-grid">
+        
+        <div class="text-only-card">
+          <h3>Durabilidad Excepcional</h3>
+          <p>Construcción de alta resistencia diseñada para soportar el uso diario sin deformarse ni corroerse, respaldada por garantías internacionales de larga duración.</p>
+        </div>
+
+        <div class="text-only-card">
+          <h3>Eficiencia Energética Superior</h3>
+          <p>Mantiene y distribuye el calor de forma uniforme, permitiendo cocinar a fuego medio o bajo para reducir el consumo de gas o electricidad en el hogar.</p>
+        </div>
+
+        <div class="text-only-card">
+          <h3>Inversión Inteligente</h3>
+          <p>Elimina el gasto recurrente de reemplazar sartenes convencionales o antiadherentes que se deterioran y desgastan con frecuencia.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. SECCIÓN BENEFICIOS DE TRABAJAR EN RACSUL -->
+  <section id="beneficios-equipo" class="section-padding" style="background-color: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Beneficios de Trabajar en RACSUL</h2>
+      <p class="section-subtitle">Ofrecemos un entorno estructurado para potenciar tu talento y recompensar tus logros.</p>
+
+      <div class="team-benefits-grid">
+
+        <div class="team-card">
+          <div class="team-img-container">
+            <span class="team-tag">Crecimiento</span>
+            <img src="discursoracsul.jpg" alt="Meritocracia Real" class="team-img" onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="team-body">
+            <h3 class="team-title">Meritocracia Real</h3>
+            <p class="team-desc">Ascensos y crecimiento profesional basados únicamente en tu desempeño, dedicación y resultados alcanzados.</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-container">
+            <span class="team-tag">Incentivos</span>
+            <img src="cenaracsul.jpg" alt="Premios y Viajes" class="team-img" onerror="this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="team-body">
+            <h3 class="team-title">Premios y Viajes de Incentivo</h3>
+            <p class="team-desc">Reconocimientos corporativos, bonificaciones especiales y viajes por cumplimiento y superación de metas comerciales.</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-container">
+            <span class="team-tag">Aprendizaje</span>
+            <img src="conferenciaracsul.jpeg" alt="Formación y Capacitación" class="team-img" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="team-body">
+            <h3 class="team-title">Formación y Capacitación</h3>
+            <p class="team-desc">Inducción integral y aprendizaje continuo en liderazgo, gestión corporativa y desarrollo comercial desde el primer día.</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-container">
+            <span class="team-tag">Diversidad</span>
+            <img src="teamracsul.jpg" alt="Oportunidades Multidisciplinarias" class="team-img" onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80'">
+          </div>
+          <div class="team-body">
+            <h3 class="team-title">Oportunidades Multidisciplinarias</h3>
+            <p class="team-desc">Vacantes abiertas tanto en Áreas Corporativas (Marketing, RRHH, Administración, Contabilidad) como en Desarrollo Comercial.</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-container">
+            <span class="team-tag">Autonomía</span>
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=500&q=80" alt="Flexibilidad" class="team-img">
+          </div>
+          <div class="team-body">
+            <h3 class="team-title">Flexibilidad y Autonomía</h3>
+            <p class="team-desc">Gestión de tiempos por cumplimiento de metas en un ambiente de trabajo dinámico y de constante apoyo profesional.</p>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-container">
+            <span class="team-tag">Ingresos</span>
+            <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=500&q=80" alt="Plan de Comisiones" class="team-img">
+          </div>
+          <div class="team-body">
+            <h3 class="team-title">Plan de Comisiones Sin Techo</h3>
+            <p class="team-desc">Esquema de ingresos highly competitivo con bonos adicionales por metas alcanzadas.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SECCIÓN ÁREAS CORPORATIVAS Y LÍNEA COMERCIAL -->
+  <section id="areas-trabajo" class="section-padding areas-section">
+    <div class="container">
+      <h2 class="section-title">Oportunidades y Áreas de Desarrollo</h2>
+      <p class="section-subtitle">En RACSUL creemos en la meritocracia y el crecimiento continuo. Te ofrecemos dos grandes vías de desarrollo profesional:</p>
+
+      <div class="areas-container">
+        
+        <div class="area-box">
+          <h3>1. Áreas Corporativas y de Soporte</h3>
+          <p class="intro">Pensado para jóvenes profesionales y estudiantes que buscan ganar experiencia profesional o desarrollarse en su especialidad dentro de una empresa formal:</p>
+          
+          <ul class="area-list">
+            <li class="area-item">
+              <h4>Marketing</h4>
+              <p>Gestión de marca, estrategia digital, material publicitario y soporte de comunicación visual.</p>
+            </li>
+            <li class="area-item">
+              <h4>Recursos Humanos</h4>
+              <p>Reclutamiento, selección de talento, clima organizacional y planes de capacitación.</p>
+            </li>
+            <li class="area-item">
+              <h4>Administración y Contabilidad</h4>
+              <p>Control documental, gestión financiera, facturación y soporte operativo.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="area-box">
+          <h3>2. Línea de Desarrollo Comercial y Negocios</h3>
+          <p class="intro">Pensado para quienes buscan crecimiento económico, liderazgo de equipos e independencia empresarial a través de nuestro plan de ascenso:</p>
+
+          <ul class="area-list">
+            <li class="area-item">
+              <h4>Practicante Comercial / Ejecutivo Junior</h4>
+              <p>Aprendizaje de metodología comercial, atención al cliente y primeras prospecciones acompañadas.</p>
+            </li>
+            <li class="area-item">
+              <h4>Asesor Comercial</h4>
+              <p>Manejo de demostraciones culinarias personalizadas, cierre de ventas y fidelización de clientes.</p>
+            </li>
+            <li class="area-item">
+              <h4>Director de Ventas / Liderazgo de Equipo</h4>
+              <p>Formación, mentoría y dirección de equipos comerciales, supervisión de metas y bonificaciones grupales.</p>
+            </li>
+            <li class="area-item">
+              <h4>Distribuidor Autorizado</h4>
+              <p>Gestión y dirección de una unidad de negocio independiente con el respaldo total de la organización.</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FORMULARIO POSTULA AQUÍ (ENVÍO AUTOMÁTICO DE CORREO CON ADJUNTO Y DATOS) -->
+  <section id="postula" class="section-padding postula-section">
+    <div class="container">
+      <h2 class="section-title">Postula a RACSUL COMPANY</h2>
+      <p class="section-subtitle">Déjanos tus datos y selecciona el área de tu interés. Nos pondremos en contacto contigo para iniciar tu proceso.</p>
+
+      <div class="form-container">
+        <form id="postulaForm" action="https://formsubmit.co/rc.recursoshumanos@racsul.com" method="POST" enctype="multipart/form-data">
+          
+          <!-- Configuración de FormSubmit -->
+          <input type="hidden" name="_subject" value="Nueva Postulación - RACSUL COMPANY">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="form-group">
+            <label for="nombre">Nombre Completo *</label>
+            <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="Tu nombre y apellidos" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo Electrónico *</label>
+            <input type="email" id="email" name="Email" class="form-control" placeholder="tu.correo@ejemplo.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="telefono" name="Telefono" class="form-control" placeholder="987 654 321" required>
+          </div>
+
+          <div class="form-group">
+            <label for="area">Área de Interés *</label>
+            <select id="area" name="Area_Interes" class="form-control" required>
+              <option value="">Selecciona un área...</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Recursos Humanos">Recursos Humanos</option>
+              <option value="Administración y Contabilidad">Administración y Contabilidad</option>
+              <option value="Desarrollo Comercial">Desarrollo Comercial y Ventas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cv">Adjunta tu CV (PDF o Word)</label>
+            <input type="file" id="cv" name="CV_Adjunto" class="form-control" accept=".pdf,.doc,.docx">
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje o Breve Presentación</label>
+            <textarea id="mensaje" name="Mensaje" class="form-control" rows="4" placeholder="Cuéntanos un poco sobre ti y tus expectativas..."></textarea>
+          </div>
+
+          <button type="submit" id="btnSubmit" class="btn btn-red" style="width: 100%;">Enviar Postulación</button>
+          
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 RACSUL COMPANY S.A.C. Todos los derechos reservados. Lima, Perú.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE ENVÍO Y MANEJO DE FORMULARIO -->
+  <script>
+    document.getElementById('postulaForm').addEventListener('submit', function(e) {
+      var btn = document.getElementById('btnSubmit');
+      var status = document.getElementById('formStatus');
+      
+      btn.disabled = true;
+      btn.innerText = 'Enviando postulación...';
+      status.className = 'form-status';
+      status.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
